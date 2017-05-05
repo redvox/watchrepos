@@ -1,12 +1,9 @@
 import logging
 import os.path
-from pprint import pprint
-
 import yaml
 from flask import Flask
 
 from app import views, update, view_util
-from app import state
 
 logger = logging.getLogger(__name__)
 
@@ -23,7 +20,6 @@ def create_app(port, environment, working_dir, greedy):
         projects.extend(get_project_directories(directory))
 
     start_update_threads(projects, config['update_interval'], greedy)
-    pprint(state.projects)
     return app
 
 

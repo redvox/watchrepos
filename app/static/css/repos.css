@@ -3,11 +3,18 @@ body, html {
 }
 
 body {
+    position: absolute;
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
     background-color: #222222;
     color: #0A0E05;
-    overflow: hidden;
+    display: flex;
+}
+
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 h1 {
@@ -16,49 +23,6 @@ h1 {
     margin-right: 10px;
 }
 
-.healthy {
-    background-color: #95D430;
-}
-
-.failed {
-    background-color: #E63934;
-}
-
-@keyframes blink-failed {
-    0% {
-        background-color: #E63934;
-    }
-    100% {
-        background-color: #FFD5D4;
-    }
-}
-
-.failed-building {
-    animation: blink-failed 1s linear infinite;
-}
-
-@keyframes blink-healthy {
-    0% {
-        background-color: #95D430;
-    }
-    100% {
-        background-color: #DDECC4;
-    }
-}
-
-.healthy-building {
-    animation: blink-healthy 1s linear infinite;
-}
-
-.unreachable {
-    background-color: #898989;
-    color: white;
-}
-
-.unknown {
-    background-color: #e4e4e4;
-    color: white;
-}
 
 .repos {
     display: flex;
@@ -91,26 +55,6 @@ h1 {
 .repos-error {
     font-weight: bold;
     color: red;
-}
-
-a {
-    text-decoration: none;
-}
-
-a:link {
-    color: #000000;
-}
-
-a:visited {
-    color: #000000;
-}
-
-a:hover {
-    color: #000000;
-}
-
-a:active {
-    color: #000000;
 }
 
 .well-border-fix {

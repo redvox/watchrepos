@@ -17,7 +17,6 @@ def filter_ok_projects(projects):
 def repos():
     filter_switch = request.args.get('filter', 'false') == 'true'
     if filter_switch:
-        print(filter_switch)
         content = filter_ok_projects(state.projects)
     else:
         content = state.projects

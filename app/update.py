@@ -46,10 +46,10 @@ def status_code(git_info):
         status_level = 1
     if git_info['commits_behind'] != '0':
         status_level = 1
-    if git_info['local_changes'] != '0':
-        status_level = 1
     if git_info['untracked'] != '0':
         status_level = 1
+    if git_info['local_changes'] != '0':
+        status_level = 2
     if git_info['status'] == 'diverged':
         status_level = 2
     status_class = ['ok', 'warning', 'danger']

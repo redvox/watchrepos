@@ -1,0 +1,3 @@
+update_interval: 300
+project_dirs:
+  - '/home/you/projects/'

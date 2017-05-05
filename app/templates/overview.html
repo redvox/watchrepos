@@ -1,0 +1,64 @@
+<html>
+<head>
+    <link href="static/3rd/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+    <link href="static/css/repos.css" rel="stylesheet" type="text/css"/>
+</head>
+
+<span><h1>Repos </h1><span class="badge">{{ projects | length }}</span></span>
+
+<button id="filter_switch" type="button" aria-label="Left Align" class="btn btn-info"
+        {% if parameter.filter=="false" %}
+        data-filtered="true">
+    <span class="glyphicon glyphicon-eye-close"></span> filter on
+    {% else %}
+    data-filtered="false">
+    <span class="glyphicon glyphicon-eye-open"></span> filter off
+    {% endif %}
+</button>
+
+<div class="repos">
+    {%- for name, git in projects.items() | sort %}
+    {{project}}
+    <div class="repos-child well well-sm well-border-fix well-{{git['status-code']}}">
+        <div class="repo-title">
+            <span class="repo-name">{{name}}</span>
+            <span class="repo-status label {{git['action']}}">{{git['action']}}</span>
+            <span class="badge repo-commits-ahead">+{{git['commits_ahead']}}</span>
+            <span class="badge repo-commits-behind">-{{git['commits_behind']}}</span>
+            {% if git['untracked'] != '0' %}
+            <span class="repo-status label label-info">untracked {{git['untracked']}}</span>
+            {% endif %}
+            {% if git['local_changes'] != '0' %}
+            <span class="repo-status label label-danger">dirty {{git['local_changes']}}</span>
+            {% endif %}
+        </div>
+        {% if git['status'] | length <= 10%}
+        {%- for line in git['status'] %}
+        <div class="repos-source-text">{{line}}</div>
+        {% endfor %}
+        {% else %}
+        <div class="repos-source-text">More than 10 files<!doctype html>
+            <html lang="en">
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport"
+                      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+                <meta http-equiv="X-UA-Compatible" content="ie=edge">
+                <title>Document</title>
+            </head>
+            <body>
+
+            </body>
+            </html>
+        </div>
+        {% endif %}
+
+    </div>
+    {% else %}
+    <div class="repos-child healthy">
+        <div class="repos-title-text">:D</div>
+    </div>
+    {% endfor %}
+</div>
+<script src="/static/js/url_params.js"></script>
+</html>

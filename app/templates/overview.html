@@ -1,13 +1,18 @@
+<!DOCTYPE html>
 <html>
+<link rel="shortcut icon" type="image/png" href="{{ url_for('static', filename = 'img/favicon.png') }}">
+
 <head>
+    <title>Repos</title>
     <link href="static/3rd/css/bootstrap.css" rel="stylesheet" type="text/css"/>
     <link href="static/css/repos.css" rel="stylesheet" type="text/css"/>
+    <meta http-equiv="refresh" content="60"/>
 </head>
 
 <div class="main">
-    <span><h1>Repos </h1><span class="badge">{{ projects | length }}</span></span>
+    <span><h3>Repos </h3><span class="badge">{{ projects | length }}</span></span>
 
-    <button id="filter_switch" type="button" aria-label="Left Align" class="btn btn-info"
+    <button id="filter_switch" type="button" aria-label="Left Align" class="btn btn-xs btn-info"
             {% if parameter.filter=="false" %}
             data-filtered="true">
         <span class="glyphicon glyphicon-eye-close"></span> filter on
